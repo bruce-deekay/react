@@ -1,26 +1,17 @@
 import './App.css';
-import { useState } from 'react';
+import { Header } from './components/Header';
+import { TaskList } from './components/TaskList';
+import { Footer } from './components/Footer';
 
 function App(){
-  const [count, setCount] = useState(0);
+  const info="Random";
 
-  function handleAdd(){
-    setCount(count+1);
-    console.log(count);
-  }
-
-  function handleSub(){
-    setCount(count-1);
-    console.log(count);
-  }
   return(
-    <div className="App">
-      <div className='Box'>
-        <p>{count}</p>
-        <button onClick={handleAdd} className='add'>Add</button>
-        <button onClick={handleSub} className='sub'>Sub</button>
-      </div>
-      <h1>Hello WOrld!</h1>
+    <div className='App'>
+      <Header/>
+      <TaskList title="Random" subtitle="Testing" info={info}/>
+      {/* Added a title named random which I accessed in the TaskList component using props to display the title */}
+      <Footer/>
     </div>
   );
 }

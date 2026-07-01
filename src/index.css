@@ -1,5 +1,40 @@
 *{
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Poppins', sans-serif;
   margin: 0px;
   padding: 0px;
+  box-sizing: border-box;
+}
+
+:root{
+  --theme-border: turquoise;
+  --theme-button: darkcyan;
+}
+
+button{
+  padding: 5px 10px;
+  border: 0px;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: darkslategray;
+  color: #FFFFFF;
+}
+
+a{
+  text-decoration: none;
+  color: black;
+}
+
+li{
+  list-style: none;
+}
+/* Index.css contains
+i. Default font for the entire webpage 
+ii. Icons
+iii. Variables i.e common items you will be reusing constantly*/
+
+main{
+  min-height: 90vh;
+  max-width: 1200px;
+  margin: auto;
+  padding: 10px;
 }
