@@ -26,10 +26,14 @@ export const TaskList = ({info}) => {
 
   return (
     <section className='tasklist'>
-        <h1 style={styles}>Task List </h1>
-        {/* when using inline CSS styling we store it like a dynamic content first({}) then we use key value pairs for the styling. We can put them directly in another pair of curled parenthesis or we can create them as objects and call them like the example above */}
+        
         <ul>
-          <button className='trigger' onClick={()=>setShow(!show)}>{show? "Hide":"Show"}</button>
+          <div>
+            <h1 style={styles}>Task List </h1>
+            {/* when using inline CSS styling we store it like a dynamic content first({}) then we use key value pairs for the styling. We can put them directly in another pair of curled parenthesis or we can create them as objects and call them like the example above */}
+            <button className='trigger' onClick={()=>setShow(!show)}>{show? "Hide":"Show"}</button>
+          </div>
+          
           {/* Used !show to reverse the current value */}
           {show && tasks.map((task)=> (
             <TaskCard key={task.id} /*info={info}*/ task={task} handleDelete={handleDelete}/>
