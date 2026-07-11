@@ -1,7 +1,8 @@
 import { useState } from "react";
 import "./AddTask.css";
 
-export const AddTask = () => {
+export const AddTask = ({tasks, setTasks}) => {
+    // getting tasks and setTasks from App.js 
     const [taskValue, setTaskValue] = useState("");
     const [progress, setProgress] = useState(false);
     
@@ -20,6 +21,8 @@ export const AddTask = () => {
             // Boolean() function helps convert progress value to a boolean, without this fuction it's value will be a string
         }
         console.log(task);
+        setTasks([...tasks, task]);
+        // ...tasks is from the parent in App.js, task is gotten dynalically from user 
         handleReset();
     }
   return (

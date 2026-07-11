@@ -5,11 +5,9 @@ import { AlertCard } from './AlertCard';
 import { BoxCard } from './BoxCard';
 import './TaskList.css';
 
-export const TaskList = ({info}) => {
-    const [tasks, setTasks] = useState([{id: 1, name: "Record Lecture", completed: true}, 
-        {id: 12, name: "Edit Lecture", completed: false}, 
-        {id: 13, name: "Watch Lecture", completed: false}]
-      );
+export const TaskList = ({info, tasks, setTasks}) => {
+  // we added access to tasks, setTasks from App.js
+    
     
       const[show, setShow] = useState(true);
       const styles={color:show? "rgb(173, 255, 47)": "#be3434", 
