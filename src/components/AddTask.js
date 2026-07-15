@@ -1,14 +1,23 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import "./AddTask.css";
 
 export const AddTask = ({tasks, setTasks}) => {
     // getting tasks and setTasks from App.js 
-    const [taskValue, setTaskValue] = useState("");
+    // const [taskValue, setTaskValue] = useState("");
+    // Initially the eference and rendering was being done by the above const before commenting and importing useRef
+    const taskRef = useRef("");
+    // useRef is ahook that lets create a eference point to any element for whichever element we want and we can accessand change its info anytime we want but we cannot render it
     const [progress, setProgress] = useState(false);
     
+    // const handleChange = (event) =>{
+    //     console.log(taskRef.current.value);
+    // we dont need this since we are not saving a taskValue
+    // }
+
     const handleReset = () => {
-        setTaskValue("");
+        // setTaskValue("");
         setProgress(false);
+        taskRef.current.value = "";
     }
 
     const handleSubmit = (event) =>{
@@ -16,7 +25,7 @@ export const AddTask = ({tasks, setTasks}) => {
         // this event.preventDefault stops the page from refreshing when we click submit
         const task = {
             id:Math.floor(Math.random()*10000),
-            name:taskValue,
+            name:taskRef.current.value,
             completed:Boolean(progress)
             // Boolean() function helps convert progress value to a boolean, without this fuction it's value will be a string
         }
@@ -29,7 +38,7 @@ export const AddTask = ({tasks, setTasks}) => {
     <section className="addtask">
         <form action="" onSubmit={handleSubmit}>
             {/* <label htmlFor="task">Task Name:</label> */}
-            <input onChange={(e) => setTaskValue(e.target.value)} type="text" name="task" id="task" placeholder="Task Name" autoComplete="off" value={taskValue}/>
+            <input type="text" name="task" id="task" placeholder="Task Name" autoComplete="off" ref={taskRef}/>
             {/* onChange function is what helps us when working with submit */}
             <select name="" id="" onChange={(event)=>setProgress(event.target.value)} value={progress}>
                 {/* value property lets us reset the progress to false once we click on reset or addtask */}
@@ -42,7 +51,7 @@ export const AddTask = ({tasks, setTasks}) => {
             <button type="submit">Add Task</button>
             
         </form>
-        <p>{taskValue}</p>
+        <p>{taskRef.current.value}</p>
     </section>
   )
 }
